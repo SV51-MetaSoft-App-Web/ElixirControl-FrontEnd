@@ -1,0 +1,9 @@
+{
+  "distributors": [
+    { "id": 1, "name": "Distribuidor 1", "code": "123456" },
+    { "id": 2, "name": "Distribuidor 2", "code": "654321" }
+  ],
+  "producers": [
+    { "id": 1, "email": "prod1@example.com", "password": "password123" }
+  ]
+}
