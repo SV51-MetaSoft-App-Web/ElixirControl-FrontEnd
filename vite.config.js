@@ -6,12 +6,12 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     hmr: {
-      overlay: true, // Asegúrate que esto esté habilitado
+      overlay: true,
     },
   },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)) // Alias @ apunta a la carpeta src
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   }
 })
