@@ -1,0 +1,59 @@
+{
+  "inventoryList": [
+    {
+      "id": 1,
+      "name": "Cabernet Grapes",
+      "type": "Raw Material",
+      "unit": "kg",
+      "expiration": "2024-12-01",
+      "supplier": "Viñedos del Sol",
+      "costPerUnit": 2.5,
+      "lastUpdated": "2024-09-01",
+      "quantity": 500
+    },
+    {
+      "id": 2,
+      "name": "Dry Yeast",
+      "type": "Raw material",
+      "unit": "kg",
+      "expiration": "2024-03-14",
+      "supplier": "Fermenta Max",
+      "costPerUnit": 15,
+      "lastUpdated": "2024-08-29",
+      "quantity": 50
+    },
+    {
+      "id": 3,
+      "name": "Oak Barrels",
+      "type": "Equipment",
+      "unit": "units",
+      "expiration": "2024-03-01",
+      "supplier": "Barriles Únicos",
+      "costPerUnit": 250,
+      "lastUpdated": "2024-09-03",
+      "quantity": 30
+    },
+    {
+      "id": 4,
+      "name": "Glass Bottles",
+      "type": "Consumable",
+      "unit": "units",
+      "expiration": "2024-06-11",
+      "supplier": "Vidrios de Oro",
+      "costPerUnit": 4,
+      "lastUpdated": "2024-09-02",
+      "quantity": 2000
+    },
+    {
+      "id": 5,
+      "name": "Natural Corks",
+      "type": "Consumable",
+      "unit": "units",
+      "expiration": "2024-07-01",
+      "supplier": "Corcho Total",
+      "costPerUnit": 1,
+      "lastUpdated": "2024-09-01",
+      "quantity": 500
+    }
+  ]
+}
