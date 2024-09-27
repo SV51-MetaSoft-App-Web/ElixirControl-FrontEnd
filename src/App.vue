@@ -1,28 +1,15 @@
 <script>
 
 import LanguageSwitcher from "./public/component/language-switcher.component.vue";
-import InventoryManagement from "./elixir-control/inventory-management/pages/inventory-management.vue";
+import NavbarElixirControl from "./public/component/navbar-elixir-control.component.vue";
+
 
 export default {
   name: "app",
-  components: {InventoryManagement, LanguageSwitcher},
+  components: {NavbarElixirControl},
+
 
   title: 'Elixir Control',
-
-  data() {
-    return {
-      drawer: false,
-      items: []
-    }
-  },
-
-
-  methods: {
-    toggleDrawer() {
-      this.drawer = !this.drawer;
-    }
-  },
-
 
   created() {
     console.log('App created');
@@ -33,43 +20,7 @@ export default {
 
 <template>
 
-
-  <pv-toast/>
-
-  <header>
-    <pv-toolbar class="w-full fixed top-0 left-0 pr-6 pl-6" style="background-color:#8B0000; margin-top: 0;">
-
-      <template #start>
-        <pv-button class="p-button-text" icon="pi pi-bars" @click="toggleDrawer"/>
-        <img src="../src/assets/img/logo-elixir-control.png" width="80" alt="Logo Elixir Control"/>
-      </template>
-
-      <template #center>
-
-      </template>
-
-      <template #end>
-
-        <div class="flex-column pl-6 pr-6">
-          <router-link v-for="item in items" :key="item.label" v-slot="{navigate, href}" :to="item.to" custom>
-            <pv-button :href="href" class="p-button-text mr-3" @click="navigate">{{ item.label }}</pv-button>
-          </router-link>
-        </div>
-
-        <div>
-          <language-switcher/>
-        </div>
-
-      </template>
-    </pv-toolbar>
-
-    <pv-drawer v-model:visible="drawer"/>
-  </header>
-
-  <main style="margin-top: 8%">
-    <router-view/>
-  </main>
-  <inventory-management></inventory-management>
+  <navbar-elixir-control></navbar-elixir-control>
 
 </template>
 
