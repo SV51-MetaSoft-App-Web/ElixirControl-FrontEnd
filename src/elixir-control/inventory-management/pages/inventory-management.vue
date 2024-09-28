@@ -2,8 +2,10 @@
 
 import InventoryCreateAndEdit from '../components/inventory-create-and-edit.vue';
 import InventoryProcessApiService from "../services/inventory-process-api.service.js";
+import NavbarElixirControl from "../../../public/component/navbar-elixir-control.component.vue";
 export default {
   components: {
+    NavbarElixirControl,
     InventoryCreateAndEdit,
   },
   data() {
@@ -76,6 +78,9 @@ export default {
 </script>
 
 <template>
+
+  <NavbarElixirControl/>
+
   <div class="inventory-management">
     <h1>Inventory Management</h1>
 

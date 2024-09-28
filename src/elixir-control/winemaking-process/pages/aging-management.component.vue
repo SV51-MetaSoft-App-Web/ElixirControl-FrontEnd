@@ -4,11 +4,12 @@ import DataManager from "../../../shared/components/data-manager.component.vue";
 import {Aging} from "../model/aging.entity.js";
 import AgingCreateAndEdit from "../components/aging-create-and-edit.component.vue";
 import WinemakingProcessManagement from "./winemaking-process-management.component.vue";
+import NavbarElixirControl from "../../../public/component/navbar-elixir-control.component.vue";
 
 
 export default {
   name: "aging-management",
-  components: {WinemakingProcessManagement, AgingCreateAndEdit, DataManager},
+  components: {NavbarElixirControl, WinemakingProcessManagement, AgingCreateAndEdit, DataManager},
 
   data() {
     return {
@@ -150,7 +151,7 @@ export default {
 }
 </script>
 
-<template>
+<template >
 
   <winemaking-process-management></winemaking-process-management>
 

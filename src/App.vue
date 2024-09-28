@@ -1,6 +1,5 @@
 <script>
 
-import LanguageSwitcher from "./public/component/language-switcher.component.vue";
 import NavbarElixirControl from "./public/component/navbar-elixir-control.component.vue";
 
 
@@ -20,7 +19,10 @@ export default {
 
 <template>
 
-  <navbar-elixir-control></navbar-elixir-control>
+  <div style="margin-top: 8%; margin-left:320px">
+     <router-view />
+  </div>
+
 
 </template>
 

@@ -2,9 +2,10 @@
 import {Bottling} from "../model/bottling.entity.js";
 import DataManager from "../../../shared/components/data-manager.component.vue";
 import BottlingCreateAndEdit from "../components/bottling-create-and-edit.component.vue";
-import {winemakingProcessApiService} from "../services/winemaking-process-api.service.js";
+
 
 import WinemakingProcessManagement from "./winemaking-process-management.component.vue";
+import {winemakingProcessApiService2} from "../services/winemaking-process2-api.service.js";
 
 export default {
   name: "bottling-management",
@@ -143,7 +144,7 @@ export default {
 
   //#region Lifecycle Hooks
   created() {
-    this.bottlingApiService = new winemakingProcessApiService("/bottling");
+    this.bottlingApiService = new winemakingProcessApiService2("/bottling");
 
     this.getAllBottling();
     console.log('Bottling Management component created');

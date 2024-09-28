@@ -1,8 +1,11 @@
 <script>
 
 
+import NavbarElixirControl from "../../../public/component/navbar-elixir-control.component.vue";
+
 export default {
   name: "winemaking-process-management",
+  components: {NavbarElixirControl},
 
   data() {
     return {
@@ -21,9 +24,11 @@ export default {
 }
 </script>
 
-<template>
+<template >
 
-  <div class="w-full">
+  <navbar-elixir-control/>
+
+  <div class="w-full" >
     <header class="fixed top-0 left-0 z-1" style="margin-top: 5%; margin-left: 400px;">
       <pv-tabs class="flex flex-row justify-content-center flex-nowrap">
         <pv-tab-list>

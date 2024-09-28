@@ -2,13 +2,14 @@
 import {Product} from "../model/product.entity.js";
 import {ProductApiService} from "../services/product-api.service.js";
 import ProductCreateAndEdit from "../components/product-create-and-edit.component.vue";
+import NavbarElixirControl from "../../../public/component/navbar-elixir-control.component.vue";
 
 
 
 
 export default {
   name: "product-management",
-  components: {ProductCreateAndEdit},
+  components: {NavbarElixirControl, ProductCreateAndEdit},
 
   data() {
     return {
@@ -131,6 +132,8 @@ export default {
 </script>
 
 <template>
+
+  <NavbarElixirControl/>
 
   <pv-toast/>
 
