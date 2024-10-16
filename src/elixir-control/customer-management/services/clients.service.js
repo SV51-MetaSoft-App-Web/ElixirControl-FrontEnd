@@ -1,6 +1,6 @@
 import http from "../../../shared/services/http-common.js";
 
-export class ClientsService{
+export class ClientsService {
     /**
      * API endpoint for clients
      * @type {string}
@@ -19,6 +19,16 @@ export class ClientsService{
     }
 
     /**
+     * Gets a client by id
+     * @param {string|number} id
+     * @returns {Promise<axios.AxiosResponse<any>>}
+     * @method getById
+     */
+    getById(id) {
+        return http.get(`${this.resourceEndpoint}/${id}`);
+    }
+
+    /**
      * Updates a client by id
      * @param id
      * @param data
@@ -26,5 +36,25 @@ export class ClientsService{
      */
     update(id, data) {
         return http.put(`${this.resourceEndpoint}/${id}`, data);
+    }
+
+    /**
+     * Creates a new client
+     * @param {Object} data
+     * @returns {Promise<axios.AxiosResponse<any>>}
+     * @method create
+     */
+    create(data) {
+        return http.post(this.resourceEndpoint, data);
+    }
+
+    /**
+     * Deletes a client by id
+     * @param {string|number} id
+     * @returns {Promise<axios.AxiosResponse<any>>}
+     * @method delete
+     */
+    delete(id) {
+        return http.delete(`${this.resourceEndpoint}/${id}`);
     }
 }
