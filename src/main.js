@@ -51,6 +51,10 @@ import router from "./router/index.js";
 import SelectButton from "primevue/selectbutton";
 import Tabs from "primevue/tabs";
 import DataView from "primevue/dataview";
+import Message from "primevue/message";
+import Skeleton from "primevue/skeleton";
+import Panel from "primevue/panel";
+import Divider from "primevue/divider";
 
 
 
@@ -104,6 +108,10 @@ app.component('pv-button', Button)
     .component('pv-tab-list', TabList)
     .component('pv-tab', Tab)
     .component('pv-tab-panel', TabPanel)
-    .component('pv-data-view', DataView);
+    .component('pv-data-view', DataView)
+.component('pv-message', Message)
+.component('pv-skeleton', Skeleton)
+.component('pv-panel', Panel)
+.component('pv-divider', Divider);
 
 app.mount('#app')
