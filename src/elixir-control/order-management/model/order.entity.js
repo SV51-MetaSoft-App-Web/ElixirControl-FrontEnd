@@ -2,16 +2,18 @@ export class Order {
     constructor(
         id,
         business,
-        date,
+        requestedDate,
         quantity,
         phone,
+        status,
         contact
     ) {
         this.id = id;
         this.business = business;
-        this.date = date;
+        this.requestedDate = requestedDate;
         this.quantity = quantity;
         this.phone = phone;
+        this.status = status;
         this.contact = contact;
     }
 }
