@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     async fetchItemDetails(id) {
-      const response = await fetch(`https://my-json-server.typicode.com/SV51-MetaSoft-App-Web/endpoint-distributor-profile-order/orderHistory/${id}`);
+      const response = await fetch(`https://my-json-server.typicode.com/SV51-MetaSoft-App-Web/endpoint-order-management/order/${id}`);
       this.order = await response.json();
     },
     goBack() {
@@ -26,14 +26,12 @@ export default {
     <h1>Order Details</h1>
     <div v-if="order" class="card">
       <div class="card-header">
-        <h2>{{ order.business }}</h2>
-        <p><strong>Date:</strong> {{ order.date }}</p>
+        <p><strong>Name of Business: </strong>{{order.business}}</p>
+        <p><strong>Requested Date:</strong> {{ order.requestedDate }}</p>
         <p><strong>Quantity:</strong> {{ order.quantity }}</p>
         <p><strong>Phone:</strong> {{ order.phone }}</p>
       </div>
       <div class="card-body">
-        <h3>More Contact Information</h3>
-        <p><strong>Additional Contact Phone:</strong> {{ order.contact.phone }}</p>
         <p><strong>Address:</strong> {{ order.contact.address }}</p>
         <p><strong>Email:</strong> {{ order.contact.email }}</p>
         <p><strong>RUC:</strong> {{ order.contact.ruc }}</p>
