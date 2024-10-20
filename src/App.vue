@@ -1,11 +1,12 @@
 <script>
 
-import HeaderContent from "./public/component/header-content.component.vue";
+import LanguageSwitcher from "./public/component/language-switcher.component.vue";
+import NavbarElixirControl from "./public/component/navbar-elixir-control.component.vue";
 
 
 export default {
   name: "app",
-  components: {HeaderContent},
+  components: {NavbarElixirControl},
 
 
   title: 'Elixir Control',
@@ -19,9 +20,7 @@ export default {
 
 <template>
 
-
-    <router-view></router-view>
-
+  <navbar-elixir-control></navbar-elixir-control>
 
 </template>
 

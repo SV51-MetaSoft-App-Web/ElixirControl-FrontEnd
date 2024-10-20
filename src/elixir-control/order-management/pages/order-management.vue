@@ -1,10 +1,8 @@
 <script>
-import OrderService from '../services/order -api.service.js';
+import OrderService from '../services/order-api.service.js';
 import OrderCreateAndEdit from "../components/order-create-and-edit.vue";
-import NavbarElixirControl from "../../../public/component/navbar-elixir-control.component.vue";
 export default {
   components: {
-    NavbarElixirControl,
     OrderCreateAndEdit,
   },
   data() {
@@ -23,23 +21,19 @@ export default {
         this.orders = await OrderService.getAllOrders();
       } catch (error) {
         console.error("Error fetching orders:", error);
-        // Aquí podrías agregar una notificación al usuario si lo deseas
       }
     },
 
     showDetails(order) {
-      this.selectedOrder = order; // Asigna la orden seleccionada
-      console.log(this.selectedOrder); // Verifica que se asigne correctamente
-      this.editDialogVisible = true; // Abre el diálogo para editar
+      this.$router.push({ name: 'OrderDetails', params: { id: order.id } });
     },
 
     closeEditDialog() {
       this.editDialogVisible = false;
-      this.selectedOrder = null; // Limpia la selección
+      this.selectedOrder = null;
     },
 
     openNewOrderDialog() {
-      // Inicializa selectedOrder con un objeto vacío para nuevo pedido
       this.selectedOrder = {
         business: '',
         date: '',
@@ -55,19 +49,15 @@ export default {
           deliveryDate: ''
         }
       };
-
-      this.editDialogVisible = true; // Abre el diálogo para crear un nuevo pedido
+      this.editDialogVisible = true;
     }
   },
 };
 </script>
 
 <template>
-
-  <NavbarElixirControl/>
-
   <div class="order-history">
-    <h1>Order History</h1>
+    <h1>My Orders</h1>
 
     <pv-data-table
         :value="orders"
@@ -83,7 +73,7 @@ export default {
 
       <pv-column headerStyle="width: 8rem">
         <template #body="{ data }">
-          <pv-button icon="pi pi-info-circle" @click="showDetails(data)" />
+          <pv-button label="Details" icon="pi pi-info-circle" @click="showDetails(data)" />
         </template>
       </pv-column>
     </pv-data-table>

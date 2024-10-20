@@ -44,17 +44,17 @@ export default {
   },
   data() {
     return {
-      orderItem: { ...this.order }, // Inicializa con una copia del pedido
+      orderItem: { ...this.order },
     };
   },
   watch: {
     order(newVal) {
-      this.orderItem = { ...newVal }; // Actualiza orderItem cuando order cambia
+      this.orderItem = { ...newVal };
     }
   },
   methods: {
     closeDialog() {
-      this.$emit('canceled'); // Emitir evento cancelado al padre
+      this.$emit('canceled');
     },
     async saveOrder() {
       try {
@@ -65,8 +65,8 @@ export default {
           // Crear nuevo pedido
           await OrderProcessApiService.create(this.orderItem);
         }
-        this.$emit('saved'); // Emitir evento guardado al padre
-        this.closeDialog(); // Cerrar el diálogo
+        this.$emit('saved');
+        this.closeDialog();
       } catch (error) {
         console.error("Error saving order:", error);
       }
@@ -77,7 +77,7 @@ export default {
 
 <template>
   <div>
-    <pv-dialog :visible="visible" @hide="closeDialog" header="Create/Edit Order">
+    <pv-dialog :visible="visible" @hide="closeDialog" header="Add New Order">
       <div class="form-group">
         <label for="business">Business:</label>
         <pv-input-text id="business" v-model="orderItem.business" required />
@@ -101,7 +101,7 @@ export default {
       <h3>Contact Details</h3>
 
       <div class="form-group">
-        <label for="contactPhone">Contact Phone:</label>
+        <label for="contactPhone">Additional Contact Phone:</label>
         <pv-input-text
             id="contactPhone"
             v-model="orderItem.contact.phone"
@@ -139,9 +139,6 @@ export default {
             required
         />
       </div>
-
-
-      <!-- Agrega más campos según sea necesario -->
 
       <template #footer>
         <pv-button label="Cancel" @click="closeDialog" />

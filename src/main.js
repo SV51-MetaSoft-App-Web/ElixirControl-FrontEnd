@@ -1,18 +1,12 @@
-import {createApp} from 'vue'
-import './style.css'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
 import i18n from "./i18n.js";
 
-
-//PrimeVue
+// PrimeVue
 import PrimeVue from 'primevue/config';
 import Aura from '@primevue/themes/aura';
-
-//PrimeFlex
 import 'primeflex/primeflex.css';
-
-
-// PrimeIcons
 import "primeicons/primeicons.css";
 import ConfirmationService from "primevue/confirmationservice";
 import DialogService from "primevue/dialogservice";
@@ -41,42 +35,20 @@ import Toolbar from "primevue/toolbar";
 import TabList from "primevue/tablist";
 import Tab from "primevue/tab";
 import TabPanel from "primevue/tabpanel";
-
-
 import Toast from "primevue/toast";
-
-
-//importado de manera local de "router/index.js" creado y ubicado en src
-import router from "./router/index.js";
 import SelectButton from "primevue/selectbutton";
 import Tabs from "primevue/tabs";
 import DataView from "primevue/dataview";
 
+const app = createApp(App);
 
-
-
-
-
-
-//create app instance
-const app=createApp(App)
-
-//use Vue i18n
-app.use(i18n)
-
-
-// Use Router
+app.use(i18n);
 app.use(router);
-
-
-// Use PrimeVue
 app.use(PrimeVue, { theme: { preset: Aura }, ripple: true })
     .use(ConfirmationService)
     .use(DialogService)
     .use(ToastService);
 
-
-// Use PrimeVue Components
 app.component('pv-button', Button)
     .component('pv-card', Card)
     .component('pv-column', Column)
@@ -106,4 +78,4 @@ app.component('pv-button', Button)
     .component('pv-tab-panel', TabPanel)
     .component('pv-data-view', DataView);
 
-app.mount('#app')
+app.mount('#app');
