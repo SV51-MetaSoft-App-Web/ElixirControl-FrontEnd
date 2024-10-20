@@ -1,11 +1,11 @@
 import axios from "axios";
 import { Order } from "../model/order.entity.js";
 
-const http = axios.create({ baseURL: "https://my-json-server.typicode.com/SV51-MetaSoft-App-Web/endpoint-distributor-profile-order" });
+const http = axios.create({ baseURL: "https://my-json-server.typicode.com/SV51-MetaSoft-App-Web/endpoint-order-management" });
 
 export class OrderProcessApiService {
     constructor() {
-        this.resourceEndpoint = '/orderHistory';
+        this.resourceEndpoint = '/order';
     }
 
     async getAllOrders() {
@@ -15,9 +15,10 @@ export class OrderProcessApiService {
         return response.data.map(item => new Order(
             item.id,
             item.business,
-            item.date,
+            item.requestedDate,
             item.quantity,
             item.phone,
+            item.status,
             item.contact
         ));
     }
