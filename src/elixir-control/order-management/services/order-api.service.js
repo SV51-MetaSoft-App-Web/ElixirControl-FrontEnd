@@ -1,11 +1,11 @@
 import axios from "axios";
-import { Order } from "../model/order.entity.js"; // Asegúrate de que la ruta sea correcta
+import { Order } from "../model/order.entity.js";
 
-const http = axios.create({ baseURL: "https://my-json-server.typicode.com/SV51-MetaSoft-App-Web/endpoint-distributor-profile-order" }); // Establece la URL base para tu API
+const http = axios.create({ baseURL: "https://my-json-server.typicode.com/SV51-MetaSoft-App-Web/endpoint-distributor-profile-order" });
 
 export class OrderProcessApiService {
     constructor() {
-        this.resourceEndpoint = '/orders'; // Cambia a tu nuevo endpoint
+        this.resourceEndpoint = '/orderHistory';
     }
 
     async getAllOrders() {
@@ -14,19 +14,11 @@ export class OrderProcessApiService {
         // Mapear los datos de respuesta a instancias de Order
         return response.data.map(item => new Order(
             item.id,
-            item.businessName,
-            item.contactName,
-            item.email,
-            item.address,
-            item.ruc,
+            item.business,
+            item.date,
             item.quantity,
             item.phone,
-            item.name,
-            item.paymentMethod,
-            item.paymentTerms,
-            item.date,
-            item.deliveryDate,
-            item.orderStatus
+            item.contact
         ));
     }
 
@@ -43,11 +35,11 @@ export class OrderProcessApiService {
     }
 
     async delete(id) {
-        return await http.delete(`${this.resourceEndpoint}/${id}`); // Usa id aquí
+        return await http.delete(`${this.resourceEndpoint}/${id}`);
     }
 
     findOrderById(id) {
-        return http.get(`${this.resourceEndpoint}?id=${id}`); // Ajusta según sea necesario
+        return http.get(`${this.resourceEndpoint}?id=${id}`);
     }
 }
 
