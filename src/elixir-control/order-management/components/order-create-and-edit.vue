@@ -100,15 +100,6 @@ export default {
 
       <h3>Contact Details</h3>
 
-      <div class="form-group">
-        <label for="contactPhone">Additional Contact Phone:</label>
-        <pv-input-text
-            id="contactPhone"
-            v-model="orderItem.contact.phone"
-            @update:modelValue="$emit('update:modelValue', $event)"
-            required
-        />
-      </div>
 
       <div class="form-group">
         <label for="contactAddress">Contact Address:</label>

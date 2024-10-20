@@ -6,13 +6,13 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
-            path: '/productor/orders/history',
+            path: '/productor/myorders',
             name: 'MyOrder',
             component: OrderHistory,
             meta: { title: 'My Orders' }
         },
         {
-            path: '/productor/orders/:id',
+            path: '/productor/orderdetails/:id',
             name: 'OrderDetails',
             component: OrderDetails,
             meta: { title: 'Order Details' }
