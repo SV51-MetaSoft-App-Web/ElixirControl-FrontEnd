@@ -1,10 +1,12 @@
 <script>
-import OrderProcessApiService from "../services/order-api.service.js"; // Asegúrate de que la ruta sea correcta
+import OrderProcessApiService from "../services/order-api.service.js";
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import InputNumber from 'primevue/inputnumber';
 import Dialog from 'primevue/dialog';
 import Calendar from 'primevue/calendar';
+import Dropdown from 'primevue/dropdown';
+import Textarea from 'primevue/textarea';
 
 export default {
   components: {
@@ -13,6 +15,8 @@ export default {
     'pv-input-number': InputNumber,
     'pv-calendar': Calendar,
     'pv-button': Button,
+    'pv-dropdown': Dropdown,
+    'pv-textarea': Textarea,
   },
   props: {
     visible: {
@@ -25,16 +29,19 @@ export default {
         business: '',
         date: '',
         quantity: 0,
-        phone: '',
         contact: {
+          name: '',
           phone: '',
           address: '',
           email: '',
           ruc: '',
           wineType: '',
           paymentMethod: '',
-          deliveryDate: ''
-        }
+          deliveryDate: '',
+        },
+        products: '',
+        transportConditions: '',
+        paymentTerms: '',
       }),
     },
     edit: {
@@ -45,6 +52,11 @@ export default {
   data() {
     return {
       orderItem: { ...this.order },
+      productOptions: [
+        { label: 'Product 1', value: 'product1' },
+        { label: 'Product 2', value: 'product2' },
+        // Agrega más opciones según sea necesario
+      ],
     };
   },
   watch: {
@@ -59,10 +71,8 @@ export default {
     async saveOrder() {
       try {
         if (this.edit) {
-          // Actualizar pedido existente
           await OrderProcessApiService.update(this.orderItem.id, this.orderItem);
         } else {
-          // Crear nuevo pedido
           await OrderProcessApiService.create(this.orderItem);
         }
         this.$emit('saved');
@@ -93,42 +103,46 @@ export default {
         <pv-input-number id="quantity" v-model="orderItem.quantity" required />
       </div>
 
-      <div class="form-group">
-        <label for="phone">Phone:</label>
-        <pv-input-text id="phone" v-model="orderItem.phone" required />
-      </div>
-
       <h3>Contact Details</h3>
 
+      <div class="form-group">
+        <label for="contactName">Contact Name:</label>
+        <pv-input-text id="contactName" v-model="orderItem.contact.name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="contactPhone">Contact Phone:</label>
+        <pv-input-text id="contactPhone" v-model="orderItem.contact.phone" required />
+      </div>
 
       <div class="form-group">
         <label for="contactAddress">Contact Address:</label>
-        <pv-input-text
-            id="contactAddress"
-            v-model="orderItem.contact.address"
-            @update:modelValue="$emit('update:modelValue', $event)"
-            required
-        />
+        <pv-input-text id="contactAddress" v-model="orderItem.contact.address" required />
       </div>
 
       <div class="form-group">
         <label for="contactEmail">Contact Email:</label>
-        <pv-input-text
-            id="contactEmail"
-            v-model="orderItem.contact.email"
-            @update:modelValue="$emit('update:modelValue', $event)"
-            required
-        />
+        <pv-input-text id="contactEmail" v-model="orderItem.contact.email" required />
       </div>
 
       <div class="form-group">
         <label for="contactRUC">Contact RUC:</label>
-        <pv-input-text
-            id="contactRUC"
-            v-model="orderItem.contact.ruc"
-            @update:modelValue="$emit('update:modelValue', $event)"
-            required
-        />
+        <pv-input-text id="contactRUC" v-model="orderItem.contact.ruc" required />
+      </div>
+
+      <div class="form-group">
+        <label for="products">Products:</label>
+        <pv-dropdown id="products" v-model="orderItem.products" :options="productOptions" required />
+      </div>
+
+      <div class="form-group">
+        <label for="transportConditions">Conditions of Transport:</label>
+        <pv-textarea id="transportConditions" v-model="orderItem.transportConditions" required />
+      </div>
+
+      <div class="form-group">
+        <label for="paymentTerms">Terms of Pay:</label>
+        <pv-textarea id="paymentTerms" v-model="orderItem.paymentTerms" required />
       </div>
 
       <template #footer>
@@ -137,9 +151,8 @@ export default {
       </template>
     </pv-dialog>
   </div>
-
 </template>
 
 <style scoped>
-
+/* Agrega estilos según sea necesario */
 </style>
