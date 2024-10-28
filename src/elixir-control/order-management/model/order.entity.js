@@ -6,7 +6,10 @@ export class Order {
         quantity,
         phone,
         status,
-        contact
+        contact,
+        products,
+        transportConditions,
+        paymentTerms
     ) {
         this.id = id;
         this.business = business;
@@ -15,11 +18,15 @@ export class Order {
         this.phone = phone;
         this.status = status;
         this.contact = contact;
+        this.products = products;
+        this.transportConditions = transportConditions;
+        this.paymentTerms = paymentTerms;
     }
 }
 
 export class Contact {
-    constructor(phone, address, email, ruc, wineType, paymentMethod, deliveryDate) {
+    constructor(name, phone, address, email, ruc, wineType, paymentMethod, deliveryDate) {
+        this.name = name;
         this.phone = phone;
         this.address = address;
         this.email = email;
