@@ -108,7 +108,7 @@ export default {
     >
       <pv-column field="business" header="Business" />
       <pv-column field="requestedDate" header="Date" />
-      <pv-column field="phone" header="Phone" />
+      <pv-column field="contact.phone" header="Phone" />
 
       <pv-column headerStyle="width: 20rem">
         <template #body="{ data }">
