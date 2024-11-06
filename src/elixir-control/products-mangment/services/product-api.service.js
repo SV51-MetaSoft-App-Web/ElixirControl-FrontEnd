@@ -7,6 +7,7 @@ export class ProductApiService {
     constructor(_resourceEndpoint) {
         this.resourceEndpoint = _resourceEndpoint;
     }
+
     getAllResources() {
         return http.get(this.resourceEndpoint);
     }
