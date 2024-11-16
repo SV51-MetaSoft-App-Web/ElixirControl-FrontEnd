@@ -65,7 +65,7 @@ export default {
             <div class="p-grid">
               <div class="p-col-12 p-md-4">
                 <strong>Name and Surname:</strong>
-                <p>{{ client.person_name }}</p>
+                <p>{{ client.personName }}</p>
               </div>
               <div class="p-col-12 p-md-4">
                 <strong>DNI Number:</strong>
@@ -83,7 +83,7 @@ export default {
             <div class="p-grid">
               <div class="p-col-12 p-md-6">
                 <strong>Business name:</strong>
-                <p>{{ client.business_name }}</p>
+                <p>{{ client.businessName }}</p>
               </div>
               <div class="p-col-12 p-md-6">
                 <strong>Phone Number:</strong>
