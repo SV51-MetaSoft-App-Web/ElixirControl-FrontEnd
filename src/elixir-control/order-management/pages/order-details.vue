@@ -32,7 +32,7 @@ export default {
       </div>
       <div class="card-body">
         <h3>Contact Details</h3>
-        <p><strong>Name:</strong> {{ order.contact.name }}</p>
+        <p><strong>Name:</strong> {{ order.name }}</p>
         <p><strong>Phone:</strong> {{ order.contact.phone }}</p>
         <p><strong>Address:</strong> {{ order.contact.address }}</p>
         <p><strong>Email:</strong> {{ order.contact.email }}</p>

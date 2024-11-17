@@ -9,7 +9,14 @@ export class Order {
         contact,
         products,
         transportConditions,
-        paymentTerms
+        paymentTerms,
+        name,
+        address,
+        email,
+        ruc,
+        wineType,
+        paymentMethod,
+        deliveryDate
     ) {
         this.id = id;
         this.business = business;
@@ -21,13 +28,7 @@ export class Order {
         this.products = products;
         this.transportConditions = transportConditions;
         this.paymentTerms = paymentTerms;
-    }
-}
-
-export class Contact {
-    constructor(name, phone, address, email, ruc, wineType, paymentMethod, deliveryDate) {
         this.name = name;
-        this.phone = phone;
         this.address = address;
         this.email = email;
         this.ruc = ruc;
@@ -36,3 +37,4 @@ export class Contact {
         this.deliveryDate = deliveryDate;
     }
 }
+

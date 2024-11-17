@@ -107,27 +107,27 @@ export default {
 
       <div class="form-group">
         <label for="contactName">Contact Name:</label>
-        <pv-input-text id="contactName" v-model="orderItem.contact.name" required />
+        <pv-input-text id="contactName" v-model="orderItem.name" required />
       </div>
 
       <div class="form-group">
         <label for="contactPhone">Contact Phone:</label>
-        <pv-input-text id="contactPhone" v-model="orderItem.contact.phone" required />
+        <pv-input-text id="contactPhone" v-model="orderItem.phone" required />
       </div>
 
       <div class="form-group">
         <label for="contactAddress">Contact Address:</label>
-        <pv-input-text id="contactAddress" v-model="orderItem.contact.address" required />
+        <pv-input-text id="contactAddress" v-model="orderItem.address" required />
       </div>
 
       <div class="form-group">
         <label for="contactEmail">Contact Email:</label>
-        <pv-input-text id="contactEmail" v-model="orderItem.contact.email" required />
+        <pv-input-text id="contactEmail" v-model="orderItem.email" required />
       </div>
 
       <div class="form-group">
         <label for="contactRUC">Contact RUC:</label>
-        <pv-input-text id="contactRUC" v-model="orderItem.contact.ruc" required />
+        <pv-input-text id="contactRUC" v-model="orderItem.ruc" required />
       </div>
 
       <div class="form-group">
