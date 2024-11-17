@@ -56,7 +56,7 @@ export default {
 
     openNewOrderDialog() {
       this.selectedOrder = {
-        business: '',
+        businessName: '',
         requestedDate: '',
         quantity: 0,
         phone: '',
@@ -98,9 +98,9 @@ export default {
         :rows-per-page-options="[5, 10, 15]"
         current-page-report-template="Showing {first} to {last} of {totalRecords} items"
     >
-      <pv-column field="business" header="Business" />
+      <pv-column field="businessName" header="Business" />
       <pv-column field="requestedDate" header="Date" />
-      <pv-column field="contact.phone" header="Phone" />
+      <pv-column field="phone" header="Phone" />
 
       <pv-column headerStyle="width: 20rem">
         <template #body="{ data }">

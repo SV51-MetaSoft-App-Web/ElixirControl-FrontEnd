@@ -1,14 +1,14 @@
 export class Order {
     constructor(
         id,
-        business,
+        businessName,
         requestedDate,
         quantity,
         phone,
         status,
-        contact,
-        products,
-        transportConditions,
+        contactName,
+        productName,
+        transportCondition,
         paymentTerms,
         name,
         address,
@@ -19,16 +19,15 @@ export class Order {
         deliveryDate
     ) {
         this.id = id;
-        this.business = business;
+        this.businessName = businessName;
         this.requestedDate = requestedDate;
         this.quantity = quantity;
         this.phone = phone;
         this.status = status;
-        this.contact = contact;
-        this.products = products;
-        this.transportConditions = transportConditions;
+        this.contactName = contactName;
+        this.productName = productName;
+        this.transportCondition = transportCondition;
         this.paymentTerms = paymentTerms;
-        this.name = name;
         this.address = address;
         this.email = email;
         this.ruc = ruc;

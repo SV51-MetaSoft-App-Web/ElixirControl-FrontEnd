@@ -31,8 +31,8 @@ export default {
   },
   methods: {
     async fetchItemDetails(id) {
-      const response = await fetch(`https://my-json-server.typicode.com/SV51-MetaSoft-App-Web/endpoint-order-management/order/${id}`);
-      this.order = await response.json();
+      const response = await OrderService.getOrderById(id);
+      this.order = response.data;
       this.selectedStatus = this.order.status;
     },
     async updateStatus() {
@@ -57,23 +57,23 @@ export default {
     <h1>Order Details</h1>
     <div v-if="order" class="card">
       <div class="card-header">
-        <p><strong>Name of Business: </strong>{{order.business}}</p>
+        <p><strong>Business Name: </strong>{{order.businessName}}</p>
         <p><strong>Requested Date:</strong> {{ order.requestedDate }}</p>
         <p><strong>Quantity:</strong> {{ order.quantity }}</p>
       </div>
       <div class="card-body">
         <h3>Contact Details</h3>
-        <p><strong>Name:</strong> {{ order.name }}</p>
-        <p><strong>Phone:</strong> {{ order.contact.phone }}</p>
-        <p><strong>Address:</strong> {{ order.contact.address }}</p>
-        <p><strong>Email:</strong> {{ order.contact.email }}</p>
-        <p><strong>RUC:</strong> {{ order.contact.ruc }}</p>
-        <p><strong>Wine Type:</strong> {{ order.contact.wineType }}</p>
-        <p><strong>Payment Method:</strong> {{ order.contact.paymentMethod }}</p>
-        <p><strong>Delivery Date:</strong> {{ order.contact.deliveryDate }}</p>
+        <p><strong>Contact Name:</strong> {{ order.contactName }}</p>
+        <p><strong>Phone:</strong> {{ order.phone }}</p>
+        <p><strong>Address:</strong> {{ order.address }}</p>
+        <p><strong>Email:</strong> {{ order.email }}</p>
+        <p><strong>RUC:</strong> {{ order.ruc }}</p>
+        <p><strong>Wine Type:</strong> {{ order.wineType }}</p>
+        <p><strong>Payment Method:</strong> {{ order.paymentMethod }}</p>
+        <p><strong>Delivery Date:</strong> {{ order.deliveryDate }}</p>
         <h3>Order Details</h3>
-        <p><strong>Products:</strong> {{ order.products }}</p>
-        <p><strong>Conditions of Transport:</strong> {{ order.transportConditions }}</p>
+        <p><strong>Product Name:</strong> {{ order.productName }}</p>
+        <p><strong>Conditions of Transport:</strong> {{ order.transportCondition }}</p>
         <p><strong>Terms of Pay:</strong> {{ order.paymentTerms }}</p>
         <h3>Update Status</h3>
         <Dropdown v-model="selectedStatus" :options="statusOptions" optionLabel="label" optionValue="value" placeholder="Select a Status" />

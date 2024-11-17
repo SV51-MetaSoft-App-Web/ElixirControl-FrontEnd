@@ -14,7 +14,7 @@ export class OrderProcessApiService {
         // Mapear los datos de respuesta a instancias de Order
         return response.data.map(item => new Order(
             item.id,
-            item.business,
+            item.businessName,
             item.requestedDate,
             item.quantity,
             item.phone,
