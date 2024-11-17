@@ -1,8 +1,28 @@
 <script>
+import Dropdown from 'primevue/dropdown';
+import Button from 'primevue/button';
+import Toast from 'primevue/toast';
+import ToastService from 'primevue/toastservice';
+import OrderService from '../services/order-api.service.js';
+
 export default {
+  components: {
+    Dropdown,
+    Button,
+    Toast,
+  },
   data() {
     return {
       order: null,
+      statusOptions: [
+        { label: 'Pending', value: 'Pending' },
+        { label: 'In process', value: 'In process' },
+        { label: 'Shipped', value: 'Shipped' },
+        { label: 'Delivered', value: 'Delivered' },
+        { label: 'Cancelled', value: 'Cancelled' },
+        { label: 'Refund', value: 'Refund' },
+      ],
+      selectedStatus: null,
     };
   },
   created() {
@@ -13,6 +33,17 @@ export default {
     async fetchItemDetails(id) {
       const response = await fetch(`https://my-json-server.typicode.com/SV51-MetaSoft-App-Web/endpoint-order-management/order/${id}`);
       this.order = await response.json();
+      this.selectedStatus = this.order.status;
+    },
+    async updateStatus() {
+      try {
+        this.order.status = this.selectedStatus;
+        await OrderService.update(this.order.id, this.order);
+        this.$toast.add({ severity: 'success', summary: 'Success', detail: 'Order status updated successfully', life: 3000 });
+      } catch (error) {
+        console.error("Error updating order status:", error);
+        this.$toast.add({ severity: 'error', summary: 'Error', detail: 'Failed to update order status', life: 3000 });
+      }
     },
     goBack() {
       this.$router.go(-1);
@@ -44,11 +75,15 @@ export default {
         <p><strong>Products:</strong> {{ order.products }}</p>
         <p><strong>Conditions of Transport:</strong> {{ order.transportConditions }}</p>
         <p><strong>Terms of Pay:</strong> {{ order.paymentTerms }}</p>
+        <h3>Update Status</h3>
+        <Dropdown v-model="selectedStatus" :options="statusOptions" optionLabel="label" optionValue="value" placeholder="Select a Status" />
+        <Button label="Update Status" @click="updateStatus" class="mt-2" />
       </div>
     </div>
     <div class="button-container">
       <button class="back-button" @click="goBack">Back</button>
     </div>
+    <Toast></Toast>
   </div>
 </template>
 
