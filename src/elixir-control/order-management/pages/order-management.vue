@@ -100,7 +100,7 @@ export default {
     >
       <pv-column field="business" header="Business" />
       <pv-column field="requestedDate" header="Date" />
-      <pv-column field="phone" header="Phone" />
+      <pv-column field="contact.phone" header="Phone" />
 
       <pv-column headerStyle="width: 20rem">
         <template #body="{ data }">
@@ -160,5 +160,11 @@ export default {
 .p-button-refund {
   background-color: #8B4513; /* Marrón */
   border-color: #8B4513;
+}
+h1 {
+  text-align: center;
+}
+button {
+  margin: 1.5px;
 }
 </style>
