@@ -1,22 +1,22 @@
 <script>
 
 
-import NavbarElixirControl from "../../../public/component/navbar-elixir-control.component.vue";
+import HeaderContent from "../../../public/component/header-content.component.vue";
 
 export default {
   name: "winemaking-process-management",
-  components: {NavbarElixirControl},
+  components: {HeaderContent},
 
   data() {
     return {
       activeTab: '/winemaking-process/batches', // Tab activo por defecto
       items: [
-        { label: 'Batches',       route: '/productor/winemaking-process/batches',       icon: 'pi-chevron-right'  },
-        { label: 'Fermentation',  route: '/productor/winemaking-process/fermentation',  icon: 'pi-chevron-right'  },
-        { label: 'Clarification', route: '/productor/winemaking-process/clarification', icon: 'pi-chevron-right'  },
-        { label: 'Pressing',      route: '/productor/winemaking-process/pressing',      icon: 'pi-chevron-right'  },
-        { label: 'Aging',         route: '/productor/winemaking-process/aging',         icon: 'pi-chevron-right'  },
-        { label: 'Bottling',      route: '/productor/winemaking-process/bottling',      icon: 'pi-chevron-right'  }
+        { label: 'Batches',       route: '/vinicultor/winemaking-process/batches',       icon: 'pi-chevron-right'  },
+        { label: 'Fermentation',  route: '/vinicultor/winemaking-process/fermentation',  icon: 'pi-chevron-right'  },
+        { label: 'Clarification', route: '/vinicultor/winemaking-process/clarification', icon: 'pi-chevron-right'  },
+        { label: 'Pressing',      route: '/vinicultor/winemaking-process/pressing',      icon: 'pi-chevron-right'  },
+        { label: 'Aging',         route: '/vinicultor/winemaking-process/aging',         icon: 'pi-chevron-right'  },
+        { label: 'Bottling',      route: '/vinicultor/winemaking-process/bottling',      icon: 'pi-chevron-right'  }
       ]
     }
   }
@@ -24,12 +24,12 @@ export default {
 }
 </script>
 
-<template >
+<template>
 
-  <navbar-elixir-control/>
+  <header-content></header-content>
 
-  <div class="w-full" >
-    <header class="fixed top-0 left-0 z-1" style="margin-top: 5%; margin-left: 400px;">
+  <div class="w-full">
+    <header class="fixed top-0 left-0 z-1" style="margin-top:80px; ">
       <pv-tabs class="flex flex-row justify-content-center flex-nowrap">
         <pv-tab-list>
           <pv-tab v-for="tab in items" :key="tab.label" :value="tab.route">

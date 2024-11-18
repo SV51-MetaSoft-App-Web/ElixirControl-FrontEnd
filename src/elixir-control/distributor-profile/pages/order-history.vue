@@ -1,10 +1,10 @@
 <script>
 import OrderService from '../services/order-history-process-api.service.js';
 import OrderCreateAndEdit from "../components/order-create-and-edit.vue";
-import NavbarElixirControl from "../../../public/component/navbar-elixir-control.component.vue";
+import HeaderContent from "../../../public/component/header-content.component.vue";
 export default {
   components: {
-    NavbarElixirControl,
+    HeaderContent,
     OrderCreateAndEdit,
   },
   data() {
@@ -64,7 +64,8 @@ export default {
 
 <template>
 
-  <NavbarElixirControl/>
+  <header-content></header-content>
+
 
   <div class="order-history">
     <h1>Order History</h1>

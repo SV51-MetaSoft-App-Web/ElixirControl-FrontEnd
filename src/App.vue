@@ -1,11 +1,11 @@
 <script>
 
-import NavbarElixirControl from "./public/component/navbar-elixir-control.component.vue";
+import HeaderContent from "./public/component/header-content.component.vue";
 
 
 export default {
   name: "app",
-  components: {NavbarElixirControl},
+  components: {HeaderContent},
 
 
   title: 'Elixir Control',
@@ -19,9 +19,8 @@ export default {
 
 <template>
 
-  <div style="margin-top: 8%; margin-left:320px">
-     <router-view />
-  </div>
+
+    <router-view></router-view>
 
 
 </template>

@@ -2,10 +2,10 @@
 
 import InventoryCreateAndEdit from '../components/inventory-create-and-edit.vue';
 import InventoryProcessApiService from "../services/inventory-process-api.service.js";
-import NavbarElixirControl from "../../../public/component/navbar-elixir-control.component.vue";
+import HeaderContent from "../../../public/component/header-content.component.vue";
 export default {
   components: {
-    NavbarElixirControl,
+    HeaderContent,
     InventoryCreateAndEdit,
   },
   data() {
@@ -34,11 +34,20 @@ export default {
       }
     },
 
+    viewDetails(id) {
+      this.$router.push({ name: 'InventoryDetail', params: { id } });
+    },
+
     applyFilter() {
       this.filteredInventoryList = this.inventoryList.filter(item => {
         const matchesType = this.selectedType ? item.type === this.selectedType : true;
         const matchesUnit = this.selectedUnit ? item.unit === this.selectedUnit : true;
-        return matchesType && matchesUnit;
+
+        const matchesName = this.searchName.length >= 3
+            ? item.name.toLowerCase().includes(this.searchName.toLowerCase())
+            : true;
+
+        return matchesType && matchesUnit && matchesName;
       });
     },
 
@@ -79,12 +88,18 @@ export default {
 
 <template>
 
-  <NavbarElixirControl/>
+  <header-content></header-content>
+
 
   <div class="inventory-management">
     <h1>Inventory Management</h1>
 
     <div class="filter-container">
+
+      <div class="filter-item">
+        <label for="nameFilter">Search by Name:</label>
+        <input type="text" id="nameFilter" v-model="searchName" @input="applyFilter" placeholder="Enter item name (min 3 characters)" />
+      </div>
       <div class="filter-item">
         <label for="typeFilter">Filter by Type:</label>
         <select v-model="selectedType" @change="applyFilter" id="typeFilter">
@@ -104,30 +119,36 @@ export default {
         </select>
       </div>
     </div>
+
     <div class="table-container">
       <pv-data-table
           v-model:selection="selectedItems"
           :value="filteredInventoryList"
-      :paginator="true"
-      :rows="10"
-      :rows-per-page-options="[5, 10, 15]"
-      current-page-report-template="Showing {first} to {last} of {totalRecords} items">
+          :paginator="true"
+          :rows="10"
+          :rows-per-page-options="[5, 10, 15]"
+          current-page-report-template="Showing {first} to {last} of {totalRecords} items">
 
-      <pv-column field="name" header="Name" />
-      <pv-column field="quantity" header="Quantity" />
-      <pv-column field="unit" header="Unit" />
-      <pv-column field="supplier" header="Supplier" />
-      <pv-column field="costPerUnit" header="Cost Per Unit" />
-      <pv-column field="expiration" header="Expiration Date" />
-      <pv-column field="lastUpdated" header="Last Updated" />
-      <pv-column field="type" header="Type" />
+        <pv-column field="name" header="Name" />
+        <pv-column field="quantity" header="Quantity" />
+        <pv-column field="unit" header="Unit" />
+        <pv-column field="supplier" header="Supplier" />
+        <pv-column field="costPerUnit" header="Cost Per Unit" />
+        <pv-column field="expiration" header="Expiration Date" />
+        <pv-column field="lastUpdated" header="Last Updated" />
+        <pv-column field="type" header="Type" />
 
-      <pv-column headerStyle="width: 8rem">
-        <template #body="{ data }">
-          <pv-button icon="pi pi-pencil" @click="editItem(data)" />
-          <pv-button icon="pi pi-trash" @click="confirmDeleteItem(data)" severity="danger" />
-        </template>
-      </pv-column>
+        <pv-column headerStyle="width: 8rem">
+          <template #body="{data}">
+            <pv-button icon="pi pi-pencil" @click="editItem(data)" />
+            <pv-button icon="pi pi-trash" @click="confirmDeleteItem(data)" severity="danger" />
+            <pv-button
+                icon="pi pi-info-circle"
+                label="View Details"
+                @click="viewDetails(data.id)"
+                class="view-details-button" />
+          </template>
+        </pv-column>
       </pv-data-table>
     </div>
 
@@ -148,39 +169,66 @@ export default {
 </template>
 
 <style scoped>
-  .inventory-management {
-    padding: 20px;
-  }
+.inventory-management {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
 
-  .filter-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
 
-  .filter-item {
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-  }
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
 
-  .filter-item label {
-    margin-bottom: 5px;
-  }
+.filter-item label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
 
-  .filter-item select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+.filter-item input,
+.filter-item select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
 
-  .table-container {
-    max-width: 100%;
-    overflow-x: auto;
-  }
+.filter-item input:focus,
+.filter-item select:focus {
+  border-color: #007bff;
+}
 
-  .add-new-button-container {
-    text-align: center; /* Center the button horizontally */
-    margin: 20px 0; /* Add some vertical spacing */
-  }
+.table-container {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.add-new-button-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.pv-button {
+  margin-right: 10px;
+}
+.view-details-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.3em 0.8em;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+.view-details-button:hover {
+  background-color: #0056b3;
+}
 </style>
