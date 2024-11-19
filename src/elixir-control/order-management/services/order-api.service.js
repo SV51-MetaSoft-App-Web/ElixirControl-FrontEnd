@@ -1,15 +1,17 @@
 import axios from "axios";
 import { Order } from "../model/order.entity.js";
 
-const http = axios.create({ baseURL: "https://my-json-server.typicode.com/SV51-MetaSoft-App-Web/endpoint-order-management" });
+const http = axios.create({ baseURL: "http://localhost:5097/api/v1" });
 
 export class OrderProcessApiService {
     constructor() {
-        this.resourceEndpoint = '/order';
+        this.resourceEndpoint = '/orders';
     }
 
-    async getAllOrders() {
-        const response = await http.get(this.resourceEndpoint);
+    async getAllOrders(profileId) {
+        const response = await http.get(this.resourceEndpoint, {
+            params: { profileId }
+        });
 
         // Mapear los datos de respuesta a instancias de Order
         return response.data.map(item => new Order(
@@ -19,7 +21,16 @@ export class OrderProcessApiService {
             item.quantity,
             item.phone,
             item.status,
-            item.contact
+            item.contactName,
+            item.productName,
+            item.transportCondition,
+            item.paymentTerms,
+            item.address,
+            item.email,
+            item.ruc,
+            item.wineType,
+            item.paymentMethod,
+            item.deliveryDate
         ));
     }
 
